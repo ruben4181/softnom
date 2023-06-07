@@ -1,6 +1,6 @@
 import axios from "axios";
 const HOST = process.env.HOST;
-const BASE_URL = "http://"+HOST+":8000";
+const BASE_URL = "http://" + HOST + ":8000";
 
 const authUser = (email, password) => {
   return new Promise((resolve, reject) => {
