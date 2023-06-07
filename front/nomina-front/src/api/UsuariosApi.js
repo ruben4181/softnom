@@ -125,7 +125,7 @@ const updateUser = (usuario_id, data) => {
     let config = {
       method: "put",
       maxBodyLength: Infinity,
-      url: BASE_URL+"/api/usuarios/" + usuario_id,
+      url: BASE_URL + "/api/usuarios/" + usuario_id,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
