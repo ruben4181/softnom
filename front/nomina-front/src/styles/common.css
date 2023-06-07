@@ -1,0 +1,50 @@
+.topbar{
+  background-color: #384ca4;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.escudo{
+  width: 50%;
+  height: 50%;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  color: white;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
+}
+
+.td-middle{
+  vertical-align: middle;
+}
+
+
+.overlay-modal{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #0000008d;
+}
