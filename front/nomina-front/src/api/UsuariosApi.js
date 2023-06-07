@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:8000";
+const HOST = process.env.HOST;
+const BASE_URL = "http://"+HOST+":8000";
 
 const authUser = (email, password) => {
   return new Promise((resolve, reject) => {
@@ -125,7 +125,7 @@ const updateUser = (usuario_id, data) => {
     let config = {
       method: "put",
       maxBodyLength: Infinity,
-      url: "http://127.0.0.1:8000/api/usuarios/" + usuario_id,
+      url: BASE_URL+"/api/usuarios/" + usuario_id,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
