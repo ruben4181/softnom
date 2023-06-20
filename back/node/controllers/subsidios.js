@@ -34,7 +34,7 @@ app.get("/subsidios/:subsidioId", (req, res) => {
 
 app.post("/subsidios", (req, res) => {
   let body = req.body;
-
+  body.activo = 1;
   services
     .addSubsidio(body)
     .then((resp) => {

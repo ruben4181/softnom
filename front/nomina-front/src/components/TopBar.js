@@ -110,20 +110,22 @@ const TopBar = (props) => {
                 </li>
                 <li>{/*<hr className="dropdown-divider" />*/}</li>
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/subsidios">
                     Subsidios
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/liquidaciones">
                     Liquidaciones
                   </a>
                 </li>
+                {/*
                 <li>
                   <a className="dropdown-item" href="/main">
                     Cesantias
                   </a>
                 </li>
+                */}
               </ul>
             </li>
             <li className="nav-item">
@@ -132,7 +134,11 @@ const TopBar = (props) => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="/main">
+              <a
+                className="nav-link"
+                aria-current="page"
+                href="/gestion-funcionarios"
+              >
                 Cuentas de usuario
               </a>
             </li>
