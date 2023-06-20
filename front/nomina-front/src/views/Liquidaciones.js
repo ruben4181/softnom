@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import Modal from "react-modal";
 import "../styles/common.css";
-import SubsidiosApi from "../api/SubsidiosApi";
 import SubsidioModal from "../components/SubsidiosModals/SubsidioModal";
 import NewSubsidioModal from "../components/SubsidiosModals/NewSubsidioModal";
 import UpdateSubsidioModal from "../components/SubsidiosModals/UpdateSubsidioModal";
+import LiquidacionesApi from "../api/LiquidacionesApi";
 
 const customStyles = {
   content: {
@@ -21,7 +21,7 @@ const customStyles = {
   },
 };
 
-const Subsidios = (props) => {
+const Liquidaciones = (props) => {
   const [search, setSearch] = React.useState("");
   const [showAddBonificacionModal, setShowAddBonificacionModal] =
     React.useState(false);
@@ -29,14 +29,14 @@ const Subsidios = (props) => {
   const [itemsFiltered, setItemsFiltered] = React.useState([]);
   const [showItemModal, setShowItemModal] = React.useState(false);
   const [showUpdateModal, setShowUpdateModal] = React.useState(false);
-  const [subsidio, setSubsidio] = React.useState(null);
+  const [liquidacion, setSubsidio] = React.useState(null);
 
   const navigate = useNavigate();
   const usuarioString = Cookies.get("usuario");
   var usuario = usuarioString ? JSON.parse(usuarioString) : null;
 
   React.useEffect(() => {
-    SubsidiosApi.getSubsidios()
+    LiquidacionesApi.getLiquidaciones()
       .then((resp) => {
         setItems(resp.data);
         setItemsFiltered([...resp.data]);
@@ -48,7 +48,7 @@ const Subsidios = (props) => {
 
   React.useEffect(() => {
     if (search.length > 3) {
-      SubsidiosApi.findSubsidios(search, search, search)
+      LiquidacionesApi.findLiquidaciones(search, search)
         .then((resp) => {
           setItemsFiltered(resp.data);
         })
@@ -97,10 +97,10 @@ const Subsidios = (props) => {
 
   const handleOnDeshabilitar = (item) => {
     item.activo = item.activo ? 0 : 1;
-    SubsidiosApi.updateSubsidio(item.id, item)
+    LiquidacionesApi.updateLiquidacion(item.id, item)
       .then((resp) => {
-        let subsidio = resp.data;
-        updateItem(subsidio);
+        let liquidacion = resp.data;
+        updateItem(liquidacion);
       })
       .catch((err) => {
         alert(err);
@@ -120,7 +120,7 @@ const Subsidios = (props) => {
         <tr key={i + "-item"}>
           <td className="td-middle">{r["id"]}</td>
           <td className="td-middle">{r["cedula"]}</td>
-          <td className="td-middle">{r["tipo"]}</td>
+          <td className="td-middle">{r["dependencia"]}</td>
           <td className="td-middle">{r["valor"]}</td>
           <td className="td-middle">
             <button
@@ -203,7 +203,7 @@ const Subsidios = (props) => {
                         setSearch(e.target.value);
                       }}
                     />
-                    <label>Buscar subsidios</label>
+                    <label>Buscar liquidaciones</label>
                   </div>
                 </div>
               </div>
@@ -216,7 +216,7 @@ const Subsidios = (props) => {
                       <tr>
                         <th scope="col">Codigo</th>
                         <th scope="col">Cédula</th>
-                        <th scope="col">Tipo</th>
+                        <th scope="col">Dependencia</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Detalles</th>
                         <th scope="col">Acciones</th>
@@ -244,7 +244,10 @@ const Subsidios = (props) => {
           style={customStyles}
           overlayClassName="overlay-modal"
         >
-          <SubsidioModal onClose={onClosePrimaModal} subsidio={subsidio} />
+          <SubsidioModal
+            onClose={onClosePrimaModal}
+            liquidacion={liquidacion}
+          />
         </Modal>
         <Modal
           isOpen={showUpdateModal}
@@ -254,7 +257,7 @@ const Subsidios = (props) => {
           <UpdateSubsidioModal
             onClose={onCloseUpdatePrimaModal}
             onSucced={updateItem}
-            subsidio={subsidio}
+            liquidacion={liquidacion}
           />
         </Modal>
       </div>
@@ -262,4 +265,4 @@ const Subsidios = (props) => {
   );
 };
 
-export default Subsidios;
+export default Liquidaciones;
