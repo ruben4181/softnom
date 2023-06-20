@@ -1,5 +1,5 @@
 import axios from "axios";
-const HOST = process.env.HOST || "localhost";
+const HOST = process.env.HOST_GC || "localhost";
 const BASE_URL = "http://" + HOST + ":8000";
 
 const getBonificaciones = () => {
