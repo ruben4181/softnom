@@ -8,6 +8,8 @@ import SubsidioModal from "../components/SubsidiosModals/SubsidioModal";
 import NewSubsidioModal from "../components/SubsidiosModals/NewSubsidioModal";
 import UpdateSubsidioModal from "../components/SubsidiosModals/UpdateSubsidioModal";
 import LiquidacionesApi from "../api/LiquidacionesApi";
+import LiquidacionModal from "../components/LiquidacionesModals/LiquidacionModal";
+import NewLiquidacionModal from "../components/LiquidacionesModals/NewLiquidacionModal";
 
 const customStyles = {
   content: {
@@ -29,7 +31,7 @@ const Liquidaciones = (props) => {
   const [itemsFiltered, setItemsFiltered] = React.useState([]);
   const [showItemModal, setShowItemModal] = React.useState(false);
   const [showUpdateModal, setShowUpdateModal] = React.useState(false);
-  const [liquidacion, setSubsidio] = React.useState(null);
+  const [liquidacion, setLiquidacion] = React.useState(null);
 
   const navigate = useNavigate();
   const usuarioString = Cookies.get("usuario");
@@ -68,8 +70,7 @@ const Liquidaciones = (props) => {
   };
 
   const handleOnUpdate = (item) => {
-    console.log(item);
-    setSubsidio(item);
+    setLiquidacion(item);
     setShowUpdateModal(true);
   };
 
@@ -108,7 +109,7 @@ const Liquidaciones = (props) => {
   };
 
   const handleOnView = (item) => {
-    setSubsidio(item);
+    setLiquidacion(item);
     setShowItemModal(true);
   };
 
@@ -159,11 +160,11 @@ const Liquidaciones = (props) => {
     return items;
   };
 
-  const onCloseAddBonificacionModal = () => {
+  const onCloseAddLiquidacionModal = () => {
     setShowAddBonificacionModal(false);
   };
 
-  const onClosePrimaModal = () => {
+  const onCloseLiquidacionModal = () => {
     setShowItemModal(false);
   };
 
@@ -234,8 +235,8 @@ const Liquidaciones = (props) => {
           style={customStyles}
           overlayClassName="overlay-modal"
         >
-          <NewSubsidioModal
-            onClose={onCloseAddBonificacionModal}
+          <NewLiquidacionModal
+            onClose={onCloseAddLiquidacionModal}
             onSucced={handleOnSucced}
           />
         </Modal>
@@ -244,8 +245,8 @@ const Liquidaciones = (props) => {
           style={customStyles}
           overlayClassName="overlay-modal"
         >
-          <SubsidioModal
-            onClose={onClosePrimaModal}
+          <LiquidacionModal
+            onClose={onCloseLiquidacionModal}
             liquidacion={liquidacion}
           />
         </Modal>
