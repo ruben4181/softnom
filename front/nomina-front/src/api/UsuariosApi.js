@@ -3,6 +3,8 @@ import axios from "axios";
 const HOST = process.env.HOST_GC || "34.125.8.183";
 const BASE_URL = "http://" + HOST + ":8000";
 
+console.log("Host RRLL", BASE_URL);
+
 const authUser = (email, password) => {
   return new Promise((resolve, reject) => {
     let config = {
