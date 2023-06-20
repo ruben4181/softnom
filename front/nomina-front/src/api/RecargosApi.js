@@ -1,5 +1,5 @@
 import axios from "axios";
-const HOST = process.env.HOST_GC || "localhost";
+const HOST = process.env.HOST_GC || "34.125.8.183";
 const BASE_URL = "http://" + HOST + ":8000";
 
 const getRecargos = () => {
