@@ -4,9 +4,9 @@ import Cookies from "js-cookie";
 import TopBar from "../components/TopBar";
 import "../styles/common.css";
 import UsuariosApi from "../api/UsuariosApi";
-import FuncionarioModal from "../components/FuncionarioModal";
-import NewFuncionarioModal from "../components/NewFuncionarioModal";
-import UpdateFuncionarioModal from "../components/UpdateFuncionarioModal";
+import FuncionarioModal from "../components/FuncModals/FuncionarioModal";
+import NewFuncionarioModal from "../components/FuncModals/NewFuncionarioModal";
+import UpdateFuncionarioModal from "../components//FuncModals/UpdateFuncionarioModal";
 import Modal from "react-modal";
 
 const customStyles = {
@@ -67,7 +67,7 @@ const GestionarFuncionarios = (props) => {
   React.useEffect(() => {
     UsuariosApi.getUsers()
       .then((resp) => {
-        let users = resp;
+        let users = resp.data;
         setFuncs(users);
         setFuncsFiltered([...users]);
       })
@@ -140,7 +140,7 @@ const GestionarFuncionarios = (props) => {
     if (search.length > 3) {
       UsuariosApi.findUser(search, search, search)
         .then((resp) => {
-          setFuncsFiltered(resp.usuarios);
+          setFuncsFiltered(resp.data);
         })
         .catch((err) => {
           console.log(err);

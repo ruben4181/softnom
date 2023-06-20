@@ -1,0 +1,7 @@
+module.exports = {
+  SP_INSERT_SUBSIDIO: "CALL SP_INSERT_SUBSIDIO(?,?,?,?,?)",
+  SP_UPDATE_SUBSIDIO: "CALL SP_UPDATE_SUBSIDIO(?,?,?,?,?,?)",
+  SP_SEARCH_SUBSIDIOS: "CALL SP_SEARCH_SUBSIDIOS(?,?,?,?)",
+  GET_SUBSIDIOS: "SELECT * FROM subsidios",
+  GET_SUBSIDIO: "SELECT * FROM subsidios S WHERE S.id = ?",
+};

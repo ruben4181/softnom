@@ -13,9 +13,12 @@ function Home() {
   const handleLoginClicked = (e) => {
     UsuariosApi.authUser(email, password)
       .then((resp) => {
-        if (resp.resultado === "OK") {
-          Cookies.set("usuario", JSON.stringify(resp.usuario), { expires: 1 });
+        if (resp.result === "OK") {
+          let data = resp.data;
+          Cookies.set("usuario", JSON.stringify(data), { expires: 1 });
           navigate("/main");
+        } else {
+          alert(resp.message);
         }
       })
       .catch((err) => {

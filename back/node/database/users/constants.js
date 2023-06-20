@@ -1,0 +1,8 @@
+module.exports = {
+  SP_INSERT_USUARIO: "CALL SP_INSERT_USUARIO(?,?,?,?,?,?,?,?,?,?,?)",
+  SP_USUARIOS_AUTH: "CALL SP_USUARIOS_AUTH(?,?)",
+  SP_UPDATE_USUARIO: "CALL SP_UPDATE_USUARIO(?,?,?,?,?,?,?,?,?,?)",
+  GET_USUARIO: "SELECT * FROM usuarios WHERE id = ?",
+  GET_USUARIOS: "SELECT * FROM usuarios",
+  SP_USUARIOS_GET_MATCHING: "CALL SP_USUARIOS_GET_MATCHING(?, ?, ?)",
+};
