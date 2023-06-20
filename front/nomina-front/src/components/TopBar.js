@@ -104,7 +104,7 @@ const TopBar = (props) => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/primas">
                     Primas
                   </a>
                 </li>

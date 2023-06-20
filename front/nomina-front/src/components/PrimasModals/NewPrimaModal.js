@@ -1,31 +1,20 @@
 import React from "react";
-import BonificacionesApi from "../../api/BonificacionesApi";
+import PrimasApi from "../../api/PrimasApi";
 
-const UpdateBonificacionModal = (props) => {
+const NewPrimaModal = (props) => {
   const [cedula, setCedula] = React.useState("");
-  const [fecha, setFecha] = React.useState("");
-  const [dias, setDias] = React.useState(0);
+  const [fecha_ingreso, setFechaIngreso] = React.useState("");
+  const [tipo, setTipo] = React.useState("");
   const [valor_total, setValorTotal] = React.useState(0);
 
-  React.useEffect(() => {
-    let bonificacion = props.bonificacion;
-    let date = new Date(bonificacion.fecha);
-    const formattedDate = date.toISOString().split("T")[0];
-    setCedula(bonificacion.cedula);
-    setDias(bonificacion.dias);
-    setValorTotal(bonificacion.valor_total);
-    setFecha(formattedDate);
-  }, []);
-
-  const handleUpdateClicked = () => {
+  const handleAddClicked = () => {
     let body = {
       cedula,
-      fecha,
       valor_total,
-      activo: props.bonificacion.activo,
+      fecha_ingreso,
+      tipo,
     };
-
-    BonificacionesApi.updateBonificacion(props.bonificacion.id, body)
+    PrimasApi.addPrima(body)
       .then((resp) => {
         alert(resp.message);
         if (resp.result === "OK") {
@@ -34,6 +23,7 @@ const UpdateBonificacionModal = (props) => {
         }
       })
       .catch((err) => {
+        console.log(err);
         alert(err.message);
       });
   };
@@ -41,7 +31,7 @@ const UpdateBonificacionModal = (props) => {
   return (
     <div className="d-flex flex-column p-4">
       <div className="mb-3">
-        <h4>Deduccion</h4>
+        <h4>Prima</h4>
       </div>
       <div className="d-flex" style={{ maxWidth: "400px" }}>
         <div className="row">
@@ -58,21 +48,6 @@ const UpdateBonificacionModal = (props) => {
                 }}
               />
               <label>Cedula</label>
-            </div>
-          </div>
-          <div className="col-12 mb-3">
-            <div className="form-floating">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Dias"
-                value={dias}
-                disabled={false}
-                onChange={(e) => {
-                  setDias(e.target.value);
-                }}
-              />
-              <label>Dias</label>
             </div>
           </div>
           <div className="col-12 mb-3">
@@ -97,21 +72,36 @@ const UpdateBonificacionModal = (props) => {
                 className="form-control"
                 placeholder="Fecha"
                 disabled={false}
-                value={fecha}
+                value={fecha_ingreso}
                 onChange={(e) => {
-                  setFecha(e.target.value);
+                  setFechaIngreso(e.target.value);
                 }}
               />
-              <label>Fecha</label>
+              <label>Fecha Ingreso</label>
+            </div>
+          </div>
+          <div className="col-12 mb-3">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Cedula"
+                value={tipo}
+                disabled={false}
+                onChange={(e) => {
+                  setTipo(e.target.value);
+                }}
+              />
+              <label>Tipo</label>
             </div>
           </div>
           <div className="col-12 mb-3">
             <div className="d-flex flex-row justify-content-end mb-3">
               <button
                 className="btn btn-primary me-3 w-25"
-                onClick={handleUpdateClicked}
+                onClick={handleAddClicked}
               >
-                Actualizar
+                Agregar
               </button>
               <button
                 className="btn btn-secondary w-25"
@@ -127,4 +117,4 @@ const UpdateBonificacionModal = (props) => {
   );
 };
 
-export default UpdateBonificacionModal;
+export default NewPrimaModal;

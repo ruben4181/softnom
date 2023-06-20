@@ -1,31 +1,31 @@
 import React from "react";
-import BonificacionesApi from "../../api/BonificacionesApi";
+import PrimasApi from "../../api/PrimasApi";
 
-const UpdateBonificacionModal = (props) => {
+const UpdatePrimaModal = (props) => {
   const [cedula, setCedula] = React.useState("");
-  const [fecha, setFecha] = React.useState("");
-  const [dias, setDias] = React.useState(0);
+  const [fecha_ingreso, setFechaIngreso] = React.useState("");
+  const [tipo, setTipo] = React.useState("");
   const [valor_total, setValorTotal] = React.useState(0);
 
   React.useEffect(() => {
-    let bonificacion = props.bonificacion;
-    let date = new Date(bonificacion.fecha);
+    let prima = props.prima;
+    let date = new Date(prima.fecha_ingreso);
     const formattedDate = date.toISOString().split("T")[0];
-    setCedula(bonificacion.cedula);
-    setDias(bonificacion.dias);
-    setValorTotal(bonificacion.valor_total);
-    setFecha(formattedDate);
+    setCedula(prima.cedula);
+    setValorTotal(prima.valor_total);
+    setFechaIngreso(formattedDate);
+    setTipo(prima.tipo);
   }, []);
 
   const handleUpdateClicked = () => {
     let body = {
       cedula,
-      fecha,
       valor_total,
-      activo: props.bonificacion.activo,
+      fecha_ingreso,
+      tipo,
+      activo: props.prima.activo,
     };
-
-    BonificacionesApi.updateBonificacion(props.bonificacion.id, body)
+    PrimasApi.updatePrima(props.prima.id, body)
       .then((resp) => {
         alert(resp.message);
         if (resp.result === "OK") {
@@ -34,6 +34,7 @@ const UpdateBonificacionModal = (props) => {
         }
       })
       .catch((err) => {
+        console.log(err);
         alert(err.message);
       });
   };
@@ -41,7 +42,7 @@ const UpdateBonificacionModal = (props) => {
   return (
     <div className="d-flex flex-column p-4">
       <div className="mb-3">
-        <h4>Deduccion</h4>
+        <h4>Prima</h4>
       </div>
       <div className="d-flex" style={{ maxWidth: "400px" }}>
         <div className="row">
@@ -58,21 +59,6 @@ const UpdateBonificacionModal = (props) => {
                 }}
               />
               <label>Cedula</label>
-            </div>
-          </div>
-          <div className="col-12 mb-3">
-            <div className="form-floating">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Dias"
-                value={dias}
-                disabled={false}
-                onChange={(e) => {
-                  setDias(e.target.value);
-                }}
-              />
-              <label>Dias</label>
             </div>
           </div>
           <div className="col-12 mb-3">
@@ -97,12 +83,27 @@ const UpdateBonificacionModal = (props) => {
                 className="form-control"
                 placeholder="Fecha"
                 disabled={false}
-                value={fecha}
+                value={fecha_ingreso}
                 onChange={(e) => {
-                  setFecha(e.target.value);
+                  setFechaIngreso(e.target.value);
                 }}
               />
-              <label>Fecha</label>
+              <label>Fecha Ingreso</label>
+            </div>
+          </div>
+          <div className="col-12 mb-3">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Cedula"
+                value={tipo}
+                disabled={false}
+                onChange={(e) => {
+                  setTipo(e.target.value);
+                }}
+              />
+              <label>Tipo</label>
             </div>
           </div>
           <div className="col-12 mb-3">
@@ -127,4 +128,4 @@ const UpdateBonificacionModal = (props) => {
   );
 };
 
-export default UpdateBonificacionModal;
+export default UpdatePrimaModal;
