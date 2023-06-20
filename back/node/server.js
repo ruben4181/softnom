@@ -10,11 +10,6 @@ let server = http.createServer(app);
 
 app.use(cors({ origin: true, credentials: true, allowedHeaders: true }));
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://34.125.8.183:3000", "*"],
-  })
-);
 //Indexing the routes
 app.use(require("./routes/index"));
 
