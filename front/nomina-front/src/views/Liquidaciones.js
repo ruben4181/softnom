@@ -10,6 +10,7 @@ import UpdateSubsidioModal from "../components/SubsidiosModals/UpdateSubsidioMod
 import LiquidacionesApi from "../api/LiquidacionesApi";
 import LiquidacionModal from "../components/LiquidacionesModals/LiquidacionModal";
 import NewLiquidacionModal from "../components/LiquidacionesModals/NewLiquidacionModal";
+import UpdateLiquidacionModal from "../components/LiquidacionesModals/UpdateLiquidacionModal";
 
 const customStyles = {
   content: {
@@ -255,7 +256,7 @@ const Liquidaciones = (props) => {
           style={customStyles}
           overlayClassName="overlay-modal"
         >
-          <UpdateSubsidioModal
+          <UpdateLiquidacionModal
             onClose={onCloseUpdatePrimaModal}
             onSucced={updateItem}
             liquidacion={liquidacion}
