@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 let server = http.createServer(app);
 
-app.use(cors({ origin: true, credentials: true, allowedHeaders: true }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 //Indexing the routes
 app.use(require("./routes/index"));
