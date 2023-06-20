@@ -1,0 +1,7 @@
+module.exports = {
+  SP_INSERT_DEDUCCION: "CALL SP_INSERT_DEDUCCION(?,?,?,?,?,?)",
+  SP_UPDATE_DEDUCCION: "CALL SP_UPDATE_DEDUCCION(?,?,?,?,?,?,?,?)",
+  SP_SEARCH_DEDUCCIONES: "CALL SP_SEARCH_DEDUCCIONES(?,?,?,?,?)",
+  GET_DEDUCCIONES: "SELECT * FROM deducciones",
+  GET_DEDUCCION: "SELECT * FROM deducciones WHERE id=?",
+};

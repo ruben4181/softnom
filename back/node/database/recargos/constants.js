@@ -1,0 +1,7 @@
+module.exports = {
+  SP_INSERT_RECARGO: "CALL SP_INSERT_RECARGO(?,?,?,?,?)",
+  SP_UPDATE_RECARGO: "CALL SP_UPDATE_RECARGO(?,?,?,?,?,?,?)",
+  GET_RECARGOS: "SELECT * FROM recargos",
+  GET_RECARGO: "SELECT * FROM recargos WHERE id = ?",
+  SP_SEARCH_RECARGOS: "CALL SP_SEARCH_RECARGOS(?,?,?)",
+};

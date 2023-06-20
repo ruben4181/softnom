@@ -4,6 +4,9 @@ import Home from "./views/Home";
 import Main from "./views/Main";
 import GestionarFuncionarios from "./views/GestionarFuncionarios";
 import Recargos from "./views/Recargos";
+import Novedades from "./views/Novedades";
+import Deducciones from "./views/Deducciones";
+import Bonificaciones from "./views/Bonificaciones";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           element={<GestionarFuncionarios />}
         />
         <Route path="/recargos" element={<Recargos />} />
+        <Route path="/novedades" element={<Novedades />} />
+        <Route path="/deducciones" element={<Deducciones />} />
+        <Route path="/bonificaciones" element={<Bonificaciones />} />
       </Routes>
     </Router>
   );

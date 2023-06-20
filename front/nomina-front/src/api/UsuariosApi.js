@@ -1,5 +1,6 @@
 import axios from "axios";
-const HOST = process.env.HOST_GC || "34.125.8.183";
+<<<<<<< HEAD
+const HOST = process.env.HOST || "34.125.8.183";
 const BASE_URL = "http://" + HOST + ":8000";
 
 const authUser = (email, password) => {

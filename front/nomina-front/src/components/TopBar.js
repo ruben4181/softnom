@@ -57,17 +57,17 @@ const TopBar = (props) => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/">
+                      <a className="dropdown-item" href="/novedades">
                         Novedades
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/">
+                      <a className="dropdown-item" href="/deducciones">
                         Deducciones
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/">
+                      <a className="dropdown-item" href="/nomina">
                         Crear nómina
                       </a>
                     </li>
@@ -99,7 +99,7 @@ const TopBar = (props) => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/bonificaciones">
                     Bonificación por servicio
                   </a>
                 </li>
