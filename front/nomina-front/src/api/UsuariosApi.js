@@ -1,5 +1,5 @@
 import axios from "axios";
-<<<<<<< HEAD
+
 const HOST = process.env.HOST || "34.125.8.183";
 const BASE_URL = "http://" + HOST + ":8000";
 
