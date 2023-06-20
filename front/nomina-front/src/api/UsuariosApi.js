@@ -18,6 +18,7 @@ const authUser = (email, password) => {
         resolve(resp.data);
       })
       .catch((err) => {
+        console.log(err);
         reject(err);
       });
   });
