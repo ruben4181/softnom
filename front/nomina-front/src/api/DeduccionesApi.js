@@ -1,5 +1,5 @@
 import axios from "axios";
-const HOST = process.env.HOST_GC || "34.125.8.183";
+const HOST = process.env.REACT_APP_HOST_GC || "34.125.8.183";
 const BASE_URL = "http://" + HOST + ":8000";
 
 const getDeducciones = () => {

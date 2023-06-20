@@ -51,7 +51,7 @@ const Primas = (props) => {
 
   React.useEffect(() => {
     if (search.length > 3) {
-      PrimasApi.findBonificaciones(search)
+      PrimasApi.findPrimas(search)
         .then((resp) => {
           setItemsFiltered(resp.data);
         })

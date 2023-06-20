@@ -119,7 +119,10 @@ let updateUser = (usuarioId, payload) => {
         let sueldoBasico = parseInt(payload.sueldo_basico);
         let condicion = payload.condicion;
         let estado = payload.estado;
-        let activo = parseInt(payload.activo);
+        let activo =
+          payload.activo || payload.activo === 0
+            ? parseInt(payload.activo)
+            : null;
 
         conn.query(
           sql_constants.SP_UPDATE_USUARIO,
@@ -139,7 +142,8 @@ let updateUser = (usuarioId, payload) => {
             if (err) {
               reject({
                 result: "ERROR",
-                message: "Error while executing " + SP_UPDATE_USUARIO,
+                message:
+                  "Error while executing " + sql_constants.SP_UPDATE_USUARIO,
                 err,
               });
             } else {
