@@ -9,5 +9,6 @@ app.use("/api/", require("../controllers/bonificaciones"));
 app.use("/api/", require("../controllers/primas"));
 app.use("/api/", require("../controllers/subsidios"));
 app.use("/api/", require("../controllers/liquidaciones"));
+app.use("/api/", require("../controllers/reportes"));
 
 module.exports = app;

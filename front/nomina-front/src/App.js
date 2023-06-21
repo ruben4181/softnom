@@ -10,6 +10,7 @@ import Bonificaciones from "./views/Bonificaciones";
 import Primas from "./views/Primas";
 import Subsidios from "./views/Subsidios";
 import Liquidaciones from "./views/Liquidaciones";
+import Nominas from "./views/Nominas";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/primas" element={<Primas />} />
         <Route path="/subsidios" element={<Subsidios />} />
         <Route path="/liquidaciones" element={<Liquidaciones />} />
+        <Route path="/nomina" element={<Nominas />} />
       </Routes>
     </Router>
   );
