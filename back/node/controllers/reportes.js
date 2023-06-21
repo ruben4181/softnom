@@ -30,4 +30,18 @@ app.get("/reportes/nomina/conf", (req, res) => {
     });
 });
 
+app.get("/reportes/desprendible/:cedula", (req, res) => {
+  let cedula = req.params.cedula;
+  services
+    .genDesprendible(cedula)
+    .then((resp) => {
+      res.status(200);
+      res.send(resp);
+    })
+    .catch((err) => {
+      res.status(500);
+      res.send(err);
+    });
+});
+
 module.exports = app;

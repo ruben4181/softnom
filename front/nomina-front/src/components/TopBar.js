@@ -75,12 +75,12 @@ const TopBar = (props) => {
                 </li>
                 <li>{/*<hr className="dropdown-divider" />*/}</li>
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/desprendible">
                     Generar desprendible
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/main">
+                  <a className="dropdown-item" href="/historico">
                     Histórico
                   </a>
                 </li>

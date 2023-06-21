@@ -11,6 +11,8 @@ import Primas from "./views/Primas";
 import Subsidios from "./views/Subsidios";
 import Liquidaciones from "./views/Liquidaciones";
 import Nominas from "./views/Nominas";
+import Historico from "./views/Historico";
+import Desprendible from "./views/Desprendible";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/subsidios" element={<Subsidios />} />
         <Route path="/liquidaciones" element={<Liquidaciones />} />
         <Route path="/nomina" element={<Nominas />} />
+        <Route path="/historico" element={<Historico />} />
+        <Route path="/desprendible" element={<Desprendible />} />
       </Routes>
     </Router>
   );

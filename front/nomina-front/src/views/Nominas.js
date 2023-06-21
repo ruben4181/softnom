@@ -2,7 +2,6 @@ import React from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar";
-import Modal from "react-modal";
 import "../styles/common.css";
 import NominasApi from "../api/NominasApi";
 import * as XLSX from "xlsx";
