@@ -65,18 +65,20 @@ const NewSubsidioModal = (props) => {
               <label>Nombre subsidio</label>
             </div>
           </div>
+
           <div className="col-12 mb-3">
             <div className="form-floating">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nombre"
-                disabled={false}
-                value={tipo}
+              <select
+                class="form-select"
+                aria-label="Seleccionando"
                 onChange={(e) => {
                   setTipo(e.target.value);
                 }}
-              />
+              >
+                <option selected>Selecciona el tipo</option>
+                <option value="SUB. TRANSPORTE">SUB. TRANSPORTE</option>
+                <option value="AUX. ALIMENTACION">AUX. ALIMENTACION</option>
+              </select>
               <label>Tipo</label>
             </div>
           </div>

@@ -88,7 +88,6 @@ const NewDeduccionModal = (props) => {
                 class="form-select"
                 aria-label="Seleccionando"
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setTipo(e.target.value);
                 }}
               >
