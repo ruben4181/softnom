@@ -47,13 +47,47 @@ const Nominas = (props) => {
   React.useEffect(() => {
     NominasApi.getNominas()
       .then((resp) => {
-        setItems(resp.data);
-        setItemsFiltered([...resp.data]);
+        setItems(calcAmmounts(resp.data));
+        setItemsFiltered([...calcAmmounts(resp.data)]);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const calcAmmounts = (items) => {
+    const nominas = [];
+    for (let i = 0; i < items.length; i++) {
+      let it = items[i];
+      let totalDevengado =
+        it["ASIGN. DEVENGADO"] +
+        it["AUX. ALIMENTACION"] +
+        it["SUB. TRANSPORTE"] +
+        it["RECARGOS"];
+      let totalDeducciones = it["E.P.S"] + it["A.F.P"] + it["OTROS"];
+      let total = totalDevengado - totalDeducciones;
+      nominas.push({
+        CEDULA: it["CEDULA"],
+        "NOMBRES Y APELLIDOS": it["NOMBRES Y APELLIDOS"],
+        CARGO: it["CARGO"],
+        "SUELDO BASICO": it["SUELDO BASICO"],
+        DIAS: it["DIAS"],
+        "ASIGN. DEVENGADO": it["ASIGN. DEVENGADO"],
+        "SUB. TRANSPORTE": it["SUB. TRANSPORTE"],
+        "AUX. ALIMENTACION": it["AUX. ALIMENTACION"],
+        RECARGOS: it["RECARGOS"],
+        "TOTAL DEVENGADO": totalDevengado,
+        "E.P.S": it["E.P.S"],
+        "A.F.P": it["A.F.P"],
+        OTROS: it["OTROS"],
+        "TOTAL DEDUCCIONES": totalDeducciones,
+        TOTAL: total,
+        FIRMA: "",
+      });
+    }
+
+    return nominas;
+  };
 
   React.useEffect(() => {
     if (search.length > 3) {
@@ -88,18 +122,27 @@ const Nominas = (props) => {
     console.log("Generando excel");
   };
 
+  const formatPrice = (number) => {
+    const formattedNumber = number.toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+    });
+    return formattedNumber;
+  };
+
   const renderDeduccionesTable = () => {
     const items = [];
     for (let i = 0; i < itemsFiltered.length; i++) {
       let r = itemsFiltered[i];
       items.push(
         <tr key={i + "-item"}>
-          <td className="td-middle">{r["cedula"]}</td>
-          <td className="td-middle">{r["cargo"]}</td>
-          <td className="td-middle">{r["sueldo_basico"]}</td>
-          <td className="td-middle">{r["total_recargos"]}</td>
-          <td className="td-middle">{r["total_deducciones"]}</td>
-          <td className="td-middle">{r["total_pago"]}</td>
+          <td className="td-middle">{r["CEDULA"]}</td>
+          <td className="td-middle">{r["CARGO"]}</td>
+          <td className="td-middle">{r["SUELDO BASICO"]}</td>
+          <td className="td-middle">{r["DIAS"]}</td>
+          <td className="td-middle">{formatPrice(r["TOTAL DEVENGADO"])}</td>
+          <td className="td-middle">{formatPrice(r["TOTAL DEDUCCIONES"])}</td>
+          <td className="td-middle">{formatPrice(r["TOTAL"])}</td>
         </tr>
       );
     }
@@ -125,7 +168,7 @@ const Nominas = (props) => {
                       genExcel();
                     }}
                   >
-                    Generar Expcel
+                    Generar Excel
                   </button>
                   <button
                     className="btn btn-primary ms-3"
@@ -161,8 +204,9 @@ const Nominas = (props) => {
                         <th scope="col">Cédula</th>
                         <th scope="col">Cargo</th>
                         <th scope="col">Sueldo Basico</th>
-                        <th scope="col">Recargos</th>
-                        <th scope="col">Deducciones</th>
+                        <th scope="col">Dias</th>
+                        <th scope="col">Total Devengado</th>
+                        <th scope="col">Total Deducciones</th>
                         <th scope="col">Total</th>
                       </tr>
                     </thead>

@@ -47,7 +47,7 @@ const TopBar = (props) => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item dropdown-toggle" href="/">
+                  <a className="dropdown-item dropdown-toggle" href="#">
                     Generar nómina
                   </a>
                   <ul className="dropdown-menu dropdown-submenu">
@@ -127,11 +127,6 @@ const TopBar = (props) => {
                 </li>
                 */}
               </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="/main">
-                Reportes
-              </a>
             </li>
             <li className="nav-item">
               <a

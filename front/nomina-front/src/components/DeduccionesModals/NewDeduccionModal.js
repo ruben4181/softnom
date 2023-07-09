@@ -92,9 +92,9 @@ const NewDeduccionModal = (props) => {
                 }}
               >
                 <option selected>Selecciona el tipo</option>
-                <option value="CREDITO">CREDITO</option>
-                <option value="PERMISOS">PERMISOS</option>
-                <option value="INCAPACIDAD">INCAPACIDAD</option>
+                <option value="OTROS">OTROS</option>
+                <option value="E.P.S">E.P.S</option>
+                <option value="A.F.P">A.F.P</option>
               </select>
               <label>Tipo</label>
             </div>
