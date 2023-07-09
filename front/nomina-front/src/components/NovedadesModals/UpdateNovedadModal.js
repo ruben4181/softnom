@@ -8,6 +8,7 @@ const UpdateNovedadModal = (props) => {
   const [descripcion, setDescripcion] = React.useState("");
   const [fecha, setFecha] = React.useState("");
   const [activo, setActivo] = React.useState(1);
+  const [dias, setDias] = React.useState(0);
 
   const handleActualizarClicked = () => {
     let body = {
@@ -17,6 +18,7 @@ const UpdateNovedadModal = (props) => {
       fecha,
       cedula,
       activo,
+      dias,
     };
 
     console.log(body);
@@ -47,6 +49,7 @@ const UpdateNovedadModal = (props) => {
         setDescripcion(data.descripcion);
         setFecha(formattedDate);
         setActivo(data.activo);
+        setDias(data.dias);
       })
       .catch((err) => {
         console.log(err);
@@ -119,6 +122,20 @@ const UpdateNovedadModal = (props) => {
                 <option value="INCAPACIDAD">INCAPACIDAD</option>
               </select>
               <label>Tipo</label>
+            </div>
+          </div>
+          <div className="col-12 mb-3">
+            <div className="form-floating">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Dias"
+                value={dias}
+                onChange={(e) => {
+                  setDias(e.target.value);
+                }}
+              />
+              <label>Dias</label>
             </div>
           </div>
           <div className="col-12 mb-3">

@@ -9,6 +9,7 @@ let addNovedad = (payload) => {
     let descripcion = payload.descripcion;
     let fecha = payload.fecha;
     let cedula = payload.cedula;
+    let dias = parseInt(payload.dias) || 0;
 
     mysql_util
       .getConnection()
@@ -16,7 +17,7 @@ let addNovedad = (payload) => {
         let conn = resp;
         conn.query(
           sql_constants.SP_INSERT_NOVEDAD,
-          [nombre, tipo, descripcion, fecha, cedula],
+          [nombre, tipo, descripcion, fecha, cedula, dias],
           (err, result) => {
             if (err) {
               reject({
@@ -54,6 +55,7 @@ let updateNovedad = (novedadId, payload) => {
     let fecha = payload.fecha;
     let cedula = payload.cedula;
     let activo = parseInt(payload.activo);
+    let dias = parseInt(payload.dias) || 0;
 
     mysql_util
       .getConnection()
@@ -61,7 +63,7 @@ let updateNovedad = (novedadId, payload) => {
         let conn = resp;
         conn.query(
           sql_constants.SP_UPDATE_NOVEDAD,
-          [novedadId, nombre, tipo, descripcion, fecha, cedula, activo],
+          [novedadId, nombre, tipo, descripcion, fecha, cedula, activo, dias],
           (err, result) => {
             mysql_util.handleSPResult(
               err,

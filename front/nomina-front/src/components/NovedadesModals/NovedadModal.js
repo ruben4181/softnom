@@ -7,6 +7,7 @@ const NovedadModal = (props) => {
   const [tipo, setTipo] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
   const [fecha, setFecha] = React.useState("");
+  const [dias, setDias] = React.useState(0);
 
   React.useState(() => {
     NovedadesApi.getNovedad(props.id)
@@ -19,6 +20,7 @@ const NovedadModal = (props) => {
         setTipo(data.tipo);
         setDescripcion(data.descripcion);
         setFecha(formattedDate);
+        setDias(data.dias);
       })
       .catch((err) => {
         console.log(err);
@@ -109,6 +111,20 @@ const NovedadModal = (props) => {
                 }}
               />
               <label>Fecha</label>
+            </div>
+          </div>
+          <div className="col-12 mb-3">
+            <div className="form-floating">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Dias"
+                value={dias}
+                onChange={(e) => {
+                  setDias(e.target.value);
+                }}
+              />
+              <label>Dias</label>
             </div>
           </div>
           <div className="col-12 mb-3">

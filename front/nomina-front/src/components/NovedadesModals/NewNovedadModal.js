@@ -7,6 +7,7 @@ const NewNovedadModal = (props) => {
   const [tipo, setTipo] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
   const [fecha, setFecha] = React.useState("");
+  const [dias, setDias] = React.useState(0);
 
   const handleAgregarClicked = () => {
     let body = {
@@ -15,6 +16,7 @@ const NewNovedadModal = (props) => {
       descripcion,
       fecha,
       cedula,
+      dias,
     };
 
     NovedadesApi.addNovedad(body)
@@ -110,6 +112,20 @@ const NewNovedadModal = (props) => {
                 }}
               />
               <label>Fecha</label>
+            </div>
+          </div>
+          <div className="col-12 mb-3">
+            <div className="form-floating">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Dias"
+                value={dias}
+                onChange={(e) => {
+                  setDias(e.target.value);
+                }}
+              />
+              <label>Dias</label>
             </div>
           </div>
           <div className="col-12 mb-3">
