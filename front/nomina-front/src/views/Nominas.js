@@ -59,6 +59,7 @@ const Nominas = (props) => {
     const nominas = [];
     for (let i = 0; i < items.length; i++) {
       let it = items[i];
+      it["ASIGN. DEVENGADO"] = (it["DIAS"] / 30) * it["SUELDO BASICO"];
       let totalDevengado =
         it["ASIGN. DEVENGADO"] +
         it["AUX. ALIMENTACION"] +
