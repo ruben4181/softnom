@@ -79,11 +79,6 @@ const TopBar = (props) => {
                     Generar desprendible
                   </a>
                 </li>
-                <li>
-                  <a className="dropdown-item" href="/historico">
-                    Histórico
-                  </a>
-                </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
