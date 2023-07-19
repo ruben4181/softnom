@@ -76,8 +76,10 @@ let genDesprendible = (cedula) => {
                 if (result[1]) {
                   data = result[1];
                 }
-                if (result[2]) {
-                  data = data.concat(result[2]);
+                for (let i = 2; i < result.length - 1; i++) {
+                  if (result[i]) {
+                    data = data.concat(result[i]);
+                  }
                 }
               }
               resolve({

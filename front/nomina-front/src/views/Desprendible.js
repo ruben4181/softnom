@@ -15,6 +15,7 @@ const Desprendible = (props) => {
   const [cargo, setCargo] = React.useState(null);
   const [area, setArea] = React.useState(null);
   const [periodo, setPeriodo] = React.useState("2023-06-30");
+  const [total, setTotal] = React.useState(0);
 
   const navigate = useNavigate();
   const usuarioString = Cookies.get("usuario");
@@ -39,6 +40,7 @@ const Desprendible = (props) => {
               alert(err.message);
             });
         }
+        setTotal(calcTotal(resp.data));
         setItems(resp.data);
         setItemsFiltered([...resp.data]);
       })
@@ -46,6 +48,24 @@ const Desprendible = (props) => {
         console.log(err);
         alert(err.message);
       });
+  };
+
+  const calcTotal = (items) => {
+    let total = 0;
+    for (let i = 0; i < items.length; i++) {
+      let it = items[i];
+      console.log(it);
+      total += it["total"];
+    }
+    return total;
+  };
+
+  const formatPrice = (number) => {
+    const formattedNumber = number.toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+    });
+    return formattedNumber;
   };
 
   const renderDeduccionesTable = () => {
@@ -57,9 +77,9 @@ const Desprendible = (props) => {
           <td className="td-middle">{r["concepto"]}</td>
           <td className="td-middle">{r["CANTIDAD"]}</td>
           <td className="td-middle">{r["descripcion"]}</td>
-          <td className="td-middle">{r["devengo"]}</td>
-          <td className="td-middle">{r["deducido"]}</td>
-          <td className="td-middle">{r["total"]}</td>
+          <td className="td-middle">{formatPrice(r["devengo"])}</td>
+          <td className="td-middle">{formatPrice(r["deducido"])}</td>
+          <td className="td-middle">{formatPrice(r["total"])}</td>
         </tr>
       );
     }
@@ -160,6 +180,14 @@ const Desprendible = (props) => {
                       </thead>
                       <tbody>{renderDeduccionesTable()}</tbody>
                     </table>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="card py-3" style={{ width: "100%" }}>
+                  <div className="flex text-end pe-3">
+                    <span className="font-weight-bold">Total:</span>{" "}
+                    {formatPrice(total)}
                   </div>
                 </div>
               </div>
