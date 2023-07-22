@@ -35,7 +35,7 @@ const convertJSONtoExcel = (data) => {
   URL.revokeObjectURL(url);
 };
 
-const Nominas = (props) => {
+const Nominas = () => {
   const [search, setSearch] = React.useState("");
   const [items, setItems] = React.useState([]);
   const [itemsFiltered, setItemsFiltered] = React.useState([]);
@@ -44,6 +44,7 @@ const Nominas = (props) => {
   const usuarioString = Cookies.get("usuario");
   var usuario = usuarioString ? JSON.parse(usuarioString) : null;
 
+  //Funcion que se dispara al iniciar la vista
   React.useEffect(() => {
     NominasApi.getNominas()
       .then((resp) => {
