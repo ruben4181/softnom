@@ -96,6 +96,7 @@ const NewNovedadModal = (props) => {
                 <option value="PERMISOS">PERMISOS</option>
                 <option value="VACACIONES">VACACIONES</option>
                 <option value="INCAPACIDAD">INCAPACIDAD</option>
+                <option value="OTROS">OTROS</option>
               </select>
               <label>Tipo</label>
             </div>
